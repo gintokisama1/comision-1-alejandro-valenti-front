@@ -1,18 +1,13 @@
-import styles from "../styles/AuthForm.module.css";
-
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 
 function RegisterForm() {
   const ref = useRef(null);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const { avatar, email, username, password } = e.target.elements;
 
     const formData = new FormData(e.target);
 
@@ -43,23 +38,65 @@ function RegisterForm() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit} ref={ref} className={styles.form}>
-        <div className={styles.inputGroup}>
-          <input type="url" placeholder="www.my-avatar.com" name="avatar" />
+    <div className="container mt-5">
+      <div className="card">
+        <div className="card-body">
+          <h2 className="mb-4">Registro de usuarios</h2>
+          <form onSubmit={handleSubmit} ref={ref}>
+            <div className="mb-3">
+              <label htmlFor="avatar" className="form-label">
+                Avatar
+              </label>
+              <input
+                type="url"
+                className="form-control"
+                id="avatar"
+                placeholder="www.my-avatar.com"
+                name="avatar"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Correo Electrónico
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="ejemplo@email.com"
+                name="email"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">
+                Nombre de Usuario
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="username"
+                placeholder="Joe Doe"
+                name="username"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="*******"
+                name="password"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Registrar
+            </button>
+          </form>
         </div>
-        <div className={styles.inputGroup}>
-          <input type="email" placeholder="my-email@email.com" name="email" />
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="text" placeholder="Joe Doe" name="username" />
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="password" placeholder="*******" name="password" />
-        </div>
-        <button>Register</button>
-      </form>
+      </div>
     </div>
   );
 }
