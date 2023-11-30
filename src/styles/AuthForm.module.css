@@ -6,15 +6,23 @@ body {
   margin: 0;
 }
 
-.form-container {
+.registerFormContainer {
+  background-image: url("/viajes.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formContainer {
   max-width: 400px;
   width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-floating {
-  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.8);
 }
