@@ -13,17 +13,21 @@
   max-width: 400px;
   width: 100%;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
-  flex-direction: column; /* Cambio clave aquí */
-  align-items: center; /* Alineación central vertical */
+  flex-direction: column;
+  align-items: center;
 }
 
 .formContainer input {
   margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .inputGroup {
@@ -34,4 +38,19 @@
 
 .inputGroup label {
   margin-bottom: 5px;
+  color: #333;
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
 }

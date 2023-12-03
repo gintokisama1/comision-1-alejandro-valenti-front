@@ -46,35 +46,43 @@ function LoginForm() {
 
     ref.current.reset();
 
-    navigate("/");
+    navigate("/foro");
   };
 
   return (
     <div className={styles.loginFormContainer}>
       <div className={styles.formContainer}>
-        <h2>Iniciar sesión:</h2>
+        <h2 className={styles.formTitle}>Iniciar sesión:</h2>
         <form onSubmit={handleSubmit} ref={ref} className={styles.form}>
           <div className={styles.inputGroup}>
-            <label htmlFor={emailRef}>Correo electrónico:</label>
+            <label htmlFor={emailRef} className={styles.label}>
+              Correo electrónico:
+            </label>
             <input
               type="email"
               placeholder="ejemplo@email.com"
               name="email"
               id={emailRef}
+              className={styles.input}
             />
           </div>
 
           <div className={styles.inputGroup}>
-            <label htmlFor={passwordRef}>Contraseña:</label>
+            <label htmlFor={passwordRef} className={styles.label}>
+              Contraseña:
+            </label>
             <input
               type="password"
               placeholder="*******"
               name="password"
               id={passwordRef}
+              className={styles.input}
             />
           </div>
 
-          <button>Login</button>
+          <button type="submit" className={styles.submitButton}>
+            Iniciar sesión
+          </button>
         </form>
       </div>
     </div>

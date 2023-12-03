@@ -6,7 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import Playlist from "../components/Playlist";
 import Navbar from "../components/Navbar";
 
-function PlaylistPage() {
+function ForoPage() {
   const [playlists, setPlaylists] = useState([]);
 
   const { auth } = useContext(AuthContext);
@@ -36,4 +36,4 @@ function PlaylistPage() {
     </div>
   );
 }
-export default PlaylistPage;
+export default ForoPage;

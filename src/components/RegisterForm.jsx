@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 import styles from "../styles/AuthForm.module.css";
 
@@ -33,6 +33,7 @@ function RegisterForm() {
     });
 
     if (req.status !== 201) return alert("Error al registrar usuario");
+
     ref.current.reset();
 
     navigate("/login");
@@ -97,6 +98,10 @@ function RegisterForm() {
                 Registrar
               </button>
             </form>
+            {/* Enlace para redirigir a la página de inicio de sesión */}
+            <div className="mt-3">
+              ¿Ya tienes una cuenta? <Link to="/login">Iniciar Sesión</Link>
+            </div>
           </div>
         </div>
       </div>

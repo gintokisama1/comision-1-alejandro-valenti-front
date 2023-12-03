@@ -3,10 +3,8 @@ import HomePage from "./pages/HomePage";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import NotFoundPage from "./pages/404Page";
-import PlaylistPage from "./pages/PlaylistPage";
+import ForoPage from "./pages/ForoPage";
 import PrivateRoutes from "./components/PrivateRoutes";
-import NewPlaylist from "./pages/NewPlaylist";
-import MusicPage from "./pages/MusicsPage";
 
 function AppRouter() {
   return (
@@ -14,9 +12,7 @@ function AppRouter() {
       {/* Rutas Protegidas */}
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/playlist" element={<PlaylistPage />} />
-        <Route path="/playlist/new" element={<NewPlaylist />} />
-        <Route path="/playlist/:playlistId" element={<MusicPage />} />
+        <Route path="/foro" element={<ForoPage />} />
       </Route>
 
       {/* Rutas Públicas */}
