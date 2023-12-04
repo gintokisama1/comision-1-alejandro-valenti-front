@@ -1,42 +1,48 @@
-import { useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { API_URL } from "../utils/consts";
 import styles from "../styles/AuthForm.module.css";
 
-function RegisterForm() {
-  const ref = useRef(null);
+const RegisterForm = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    avatar: "",
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    try {
+      const req = await fetch(`${API_URL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const avatar = formData.get("avatar");
-    const email = formData.get("email");
-    const username = formData.get("username");
-    const password = formData.get("password");
-
-    const user = {
-      avatar,
-      email,
-      username,
-      password,
-    };
-
-    const req = await fetch(`${API_URL}/auth/register`, {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (req.status !== 201) return alert("Error al registrar usuario");
-
-    ref.current.reset();
-
-    navigate("/login");
+      if (req.status === 201) {
+        // Registro exitoso
+        console.log("Usuario registrado con éxito");
+        navigate("/login");
+      } else {
+        // Error en el registro
+        const errorData = await req.json();
+        console.error("Error al registrar usuario:", errorData.message);
+        alert(`Error al registrar usuario: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Error en la solicitud. Por favor, intenta nuevamente.");
+    }
   };
 
   return (
@@ -45,7 +51,7 @@ function RegisterForm() {
         <div className="card">
           <div className="card-body">
             <h2 className="mb-4">Registro de usuarios</h2>
-            <form onSubmit={handleSubmit} ref={ref}>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="avatar" className="form-label">
                   Avatar
@@ -56,6 +62,8 @@ function RegisterForm() {
                   id="avatar"
                   placeholder="https://www.mi-avatar.com"
                   name="avatar"
+                  value={formData.avatar}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -68,6 +76,8 @@ function RegisterForm() {
                   id="email"
                   placeholder="ejemplo@email.com"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -80,6 +90,8 @@ function RegisterForm() {
                   id="username"
                   placeholder="Joe Doe"
                   name="username"
+                  value={formData.username}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
@@ -92,6 +104,8 @@ function RegisterForm() {
                   id="password"
                   placeholder="*******"
                   name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                 />
               </div>
               <button type="submit" className="btn btn-primary">
@@ -107,6 +121,6 @@ function RegisterForm() {
       </div>
     </div>
   );
-}
+};
 
 export default RegisterForm;
