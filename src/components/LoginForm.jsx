@@ -46,7 +46,7 @@ function LoginForm() {
 
     ref.current.reset();
 
-    navigate("/foro");
+    navigate("/createpost");
   };
 
   return (

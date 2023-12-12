@@ -12,8 +12,6 @@ const PlayItem = ({ playlist, getPlaylist, onClick }) => {
       key={playlist._id}
       className={styles.item}
       onClick={(e) => {
-        // stop propagation to avoid triggering the onClick of the parent
-
         e.stopPropagation();
 
         onClick();

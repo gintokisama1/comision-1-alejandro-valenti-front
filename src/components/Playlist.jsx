@@ -3,7 +3,6 @@ import PlayItem from "./PlayItem";
 import { Link, useNavigate } from "react-router-dom";
 
 const Playlist = ({ playlists, getPlaylist }) => {
-  // la información que NO vamos a modificar.
   const [search, setSearch] = useState("");
   const [filterPlaylists, setFilterPlaylists] = useState(playlists);
 

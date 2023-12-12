@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import NotFoundPage from "./pages/404Page";
-import ForoPage from "./pages/ForoPage";
+import CreatePostPage from "./pages/CreatePostPage";
 import PrivateRoutes from "./components/PrivateRoutes";
 
 function AppRouter() {
@@ -12,7 +12,7 @@ function AppRouter() {
       {/* Rutas Protegidas */}
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/foro" element={<ForoPage />} />
+        <Route path="/createpost" element={<CreatePostPage />} />
       </Route>
 
       {/* Rutas Públicas */}
