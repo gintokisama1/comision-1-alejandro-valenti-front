@@ -1,31 +1,33 @@
-import { useId, useRef } from "react";
+import React, { useId, useRef } from "react";
 import { API_URL } from "../utils/consts";
 
-const DeletePlaylistModel = ({ playlistId, getPlaylist }) => {
+const DeletePostModel = ({ postId, getPosts }) => {
   const labelId = useId();
   const ref = useRef(null);
 
   const handleDelete = () => {
-    // eliminar la tarea con playlistId
-    console.log("delete playlist", playlistId);
-    fetch(`${API_URL}/playlist/${playlistId}`, {
+    console.log("delete post", postId);
+    fetch(`${API_URL}/posts/${postId}`, {
       method: "DELETE",
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    }).then((res) => {
-      if (res.status !== 200) return alert("Error deleting playlist");
+    })
+      .then((res) => {
+        if (res.status !== 200) return alert("Error deleting post");
 
-      // refresh page
-      ref.current.click();
-      getPlaylist();
-    });
+        ref.current.click();
+        getPosts();
+      })
+      .catch((error) => {
+        console.error("Error deleting post:", error);
+      });
   };
 
   return (
     <div
       className="modal fade"
-      id={"modal" + playlistId}
+      id={"modal" + postId}
       aria-labelledby={labelId}
       aria-hidden="true"
     >
@@ -33,7 +35,7 @@ const DeletePlaylistModel = ({ playlistId, getPlaylist }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id={labelId}>
-              Delete Playlist
+              Delete Post
             </h1>
             <button
               type="button"
@@ -43,7 +45,7 @@ const DeletePlaylistModel = ({ playlistId, getPlaylist }) => {
             ></button>
           </div>
           <div className="modal-body">
-            Are you sure you want to delete this playlist?
+            Are you sure you want to delete this post?
           </div>
           <div className="modal-footer">
             <button
@@ -68,4 +70,4 @@ const DeletePlaylistModel = ({ playlistId, getPlaylist }) => {
   );
 };
 
-export default DeletePlaylistModel;
+export default DeletePostModel;

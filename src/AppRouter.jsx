@@ -3,8 +3,9 @@ import HomePage from "./pages/HomePage";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import NotFoundPage from "./pages/404Page";
-import CreatePostPage from "./pages/CreatePostPage";
+import PostPage from "./pages/PostPage";
 import PrivateRoutes from "./components/PrivateRoutes";
+import NewPost from "./pages/NewPost";
 
 function AppRouter() {
   return (
@@ -12,7 +13,8 @@ function AppRouter() {
       {/* Rutas Protegidas */}
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/createpost" element={<CreatePostPage />} />
+        <Route path="/posts" element={<PostPage />} />
+        <Route path="/posts/new" element={<NewPost />} />
       </Route>
 
       {/* Rutas Públicas */}
@@ -23,4 +25,5 @@ function AppRouter() {
     </Routes>
   );
 }
+
 export default AppRouter;
