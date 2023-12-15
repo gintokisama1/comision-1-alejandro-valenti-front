@@ -28,8 +28,7 @@ const PostItem = ({ post, getPosts, onClick }) => {
           <div className="card-body">
             <h5 className="card-title">{post.titulo}</h5>
             <p className="card-text">
-              <b>{post.author.username}</b>
-              <span>{post.contenido} contenido</span>
+              <span>{post.contenido}</span>
             </p>
           </div>
         </div>
