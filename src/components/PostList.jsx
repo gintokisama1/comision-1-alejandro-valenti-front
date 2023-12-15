@@ -11,7 +11,7 @@ const PostList = ({ posts, getPosts }) => {
   useEffect(() => {
     if (Array.isArray(posts)) {
       const filtered = posts.filter((post) => {
-        return post.title.toLowerCase().includes(search.toLowerCase());
+        return post.titulo.toLowerCase().includes(search.toLowerCase());
       });
 
       setFilteredPosts(filtered);

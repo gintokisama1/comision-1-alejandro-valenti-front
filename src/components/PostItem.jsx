@@ -29,7 +29,7 @@ const PostItem = ({ post, getPosts, onClick }) => {
             <h5 className="card-title">{post.titulo}</h5>
             <p className="card-text">
               <b>{post.author.username}</b>
-              <span>{post.contenido.length} contenido</span>
+              <span>{post.contenido} contenido</span>
             </p>
           </div>
         </div>
